@@ -12,7 +12,7 @@ class Assignment1:
     SIMULATION_TIME = 30     # Total simulation time in seconds
     MAX_PRINTER_SLEEP = 3    # Maximum sleep time for printers
     MAX_MACHINE_SLEEP = 5    # Maximum sleep time for machines
-
+    QUEUE_CAPACITY = 5       # Maximum capacity of the print queue
     # Initialise simulation variables
     def __init__(self):
         self.sim_active = True
