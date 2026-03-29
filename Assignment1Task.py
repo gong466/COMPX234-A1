@@ -17,6 +17,10 @@ class Assignment1:
     def __init__(self):
         self.sim_active = True
         self.print_list = printList()  # Create an empty list of print requests
+        # Task 2: Synchronization primitives for producer-consumer
+        self.mutex = threading.Lock()                     # Mutual exclusion lock for queue access
+        self.empty = threading.Semaphore(self.QUEUE_CAPACITY)  # Counts empty slots in the queue
+        self.full = threading.Semaphore(0)                # Counts filled slots in the queue
         self.mThreads = []             # list for machine threads
         self.pThreads = []             # list for printer threads
 
