@@ -65,6 +65,16 @@ class Assignment1:
                 self.printerSleep()
                 # Grab the request at the head of the queue and print it
                 # Write code here
+                # Wait until there is at least one document to print
+                self.outer.full.acquire()
+
+                # Lock the queue to ensure exclusive access
+                with self.outer.mutex:
+                self.printDox(self.printerID)
+
+                # Release one empty slot after printing
+                self.outer.empty.release()
+
                 self.printDox(self.printerID)
 
         def printerSleep(self):
