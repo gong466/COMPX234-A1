@@ -99,6 +99,16 @@ class Assignment1:
                 self.machineSleep()
                 # Machine wakes up and sends a print request
                 # Write code here
+                # Wait until there is an empty slot in the queue
+                 self.outer.empty.acquire()
+
+                # Lock the queue to ensure exclusive access
+                with self.outer.mutex:
+                 self.printRequest(self.machineID)
+
+                # Notify printers that a new task is available
+                self.outer.full.release()
+
                  self.printRequest(self.machineID)
 
         def machineSleep(self):
